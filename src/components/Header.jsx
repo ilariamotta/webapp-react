@@ -7,7 +7,7 @@ export default function Header({ nomeApp }) {
     ]
     return (
         <header>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">{nomeApp || "DefaultApp"}</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@ export default function Header({ nomeApp }) {
                         <ul className="navbar-nav">
                             {headerLinks.map((link, index) => {
                                 return <li className="nav-item" key={index}>
-                                    <NavLink className="nav-link active" aria-current="page" to={link.path}>{link.title}</NavLink>
+                                    <NavLink to={link.path} className={({ isActive }) =>"nav-link px-3" + (isActive ? "active" : "")}>{link.title}</NavLink>
                                 </li>
                             })}
                         </ul>
