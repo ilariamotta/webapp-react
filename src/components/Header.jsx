@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 export default function Header({ nomeApp }) {
     const headerLinks = [
         { title: "Home", path: "/" },
@@ -15,7 +17,7 @@ export default function Header({ nomeApp }) {
                         <ul className="navbar-nav">
                             {headerLinks.map((link, index) => {
                                 return <li className="nav-item" key={index}>
-                                    <a className="nav-link active" aria-current="page" href={link.path}>{link.title}</a>
+                                    <NavLink className="nav-link active" aria-current="page" to={link.path}>{link.title}</NavLink>
                                 </li>
                             })}
                         </ul>
