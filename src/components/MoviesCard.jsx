@@ -19,7 +19,7 @@ export default function MoviesCard({ movie }) {
             </ul>
 
             <div className="card-body">
-                <div className="d-flex justify-content-between py-3"><p className="fw-semibold">Voto: {Number(movie.avg_vote.toFixed(1))}</p>
+                <div className="d-flex justify-content-between py-3"><p className="fw-semibold">Voto: {movie.avg_vote}</p>
                 <Link to={`/movies/${movie.id}`} className="btn btn-primary btn-sm">Vedi le recensioni</Link>
                 </div>
                 <ul className="list-group list-group-flush">
