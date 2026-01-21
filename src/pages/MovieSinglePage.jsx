@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -6,6 +6,7 @@ import NoImage from "../assets/images/No-Photo-Available.jpg";
 import ReviewCard from "../components/ReviewCard";
 
 export default function MovieSinglePage() {
+    const navigator = useNavigate();
     const [movie, setMovie] = useState({});
     const { id } = useParams();
     const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -13,6 +14,11 @@ export default function MovieSinglePage() {
     useEffect(() => {
         axios.get(`${backendBaseUrl}/api/movies/${id}`).then((resp) => setMovie(resp.data)).catch((err) => console.log(err))
     }, [id])
+
+    function goBackButton(event) {
+        event.preventDefault();
+        navigator(-1)
+    }
 
     return (
         <> <section>
@@ -25,7 +31,9 @@ export default function MovieSinglePage() {
                         <img src={movie.image !== null ? `${backendBaseUrl}/image/${movie.image}` : NoImage}
                             alt={movie.title}
                             className="img-fluid rounded shadow"
-                            style={{ objectFit: "cover", maxHeight: "600px", width: "100%" }} /></div>
+                            style={{ objectFit: "cover", maxHeight: "600px", width: "100%" }} />
+                        <button type="button" onClick={goBackButton} className="btn btn-primary btn-sm my-4">Torna alla lista film</button>
+                    </div>
                     {/* COLONNA DETTAGLI */}
                     <div className="col-12 col-md-8">
                         <h4>Sinossi:</h4>
