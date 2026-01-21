@@ -1,4 +1,5 @@
 import NoImage from "../assets/images/No-Photo-Available.jpg";
+import { Link } from "react-router-dom"
 
 export default function MoviesCard({ movie }) {
     const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -19,7 +20,7 @@ export default function MoviesCard({ movie }) {
 
             <div className="card-body">
                 <div className="d-flex justify-content-between"><p className="fw-semibold">Voto:</p>
-                <a href="#" className="card-link">Vedi le recensioni</a>
+                <Link to={`/movies/${movie.id}`} className="btn btn-outline-primary">Vedi le recensioni</Link>
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item py-1 align-items-center"><span>Aggiunto il: </span>{movie.created_at}</li>
