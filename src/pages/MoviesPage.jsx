@@ -13,7 +13,7 @@ export default function MoviesPage() {
     return (
         <>
             <div className="container">
-                <div className="row g-3">
+                <div className="row">
                     <h1 className="py-4">Lista dei film</h1>
                     {movies.map((movie) => (
                         <div key={movie.id} className="col-12 col-sm-6 col-md-4 col-lg-3">

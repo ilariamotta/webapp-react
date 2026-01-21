@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import NoImage from "../assets/images/No-Photo-Available.jpg";
+import ReviewCard from "../components/ReviewCard";
 
 export default function MovieSinglePage() {
     const [movie, setMovie] = useState({});
@@ -36,7 +37,15 @@ export default function MovieSinglePage() {
                         </ul>
                         {/* recensioni*/}
                         <h3>Recensioni:</h3>
-
+                        <div className="row">
+                            {movie.reviews && movie.reviews.length > 0 ? (
+                                movie.reviews.map((review) => (
+                                    <ReviewCard key={review.id} review={review} />
+                                ))
+                            ) : (
+                                <p>Nessuna recensione presente</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
