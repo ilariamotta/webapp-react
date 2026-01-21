@@ -4,9 +4,11 @@ import MoviesCard from "../components/MoviesCard";
 
 export default function MoviesPage() {
     const [movies, setMovies] = useState([]);
+
+    const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
+
     useEffect(() => {
-        console.log("Chiamo Api");
-        axios.get("http://localhost:3000/api/movies").then((resp) => { console.log("Data:", resp.data); setMovies(resp.data.results) }).catch((err) => { console.log(err) })
+        axios.get(`${backendBaseUrl}/api/movies`).then((resp) => { console.log("Data:", resp.data); setMovies(resp.data.results) }).catch((err) => { console.log(err) })
     }, [])
     return (
         <>

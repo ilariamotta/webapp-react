@@ -1,8 +1,10 @@
+import NoImage from "../assets/images/No-Photo-Available.jpg";
+
 export default function MoviesCard({ movie }) {
-    const baseURL = "http://localhost:3000";
+    const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
     return (
         <div className="card h-100">
-            <img src={`http://localhost:3000/image/${movie.image}`} className="card-img-top" alt={movie.title} style={{ height: "600px", objectFit: "cover" }}/>
+            <img src={movie.image !== null ? `${backendBaseUrl}/image/${movie.image}` : NoImage} className="card-img-top" alt={movie.title} style={{ height: "600px", objectFit: "cover" }}/>
             <div className="card-body">
                 <h3 className="card-title">{movie.title}</h3>
                 <p className="card-text">
