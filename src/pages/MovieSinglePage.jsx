@@ -13,8 +13,13 @@ export default function MovieSinglePage() {
     const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
-        axios.get(`${backendBaseUrl}/api/movies/${slug}`).then((resp) => setMovie(resp.data)).catch((err) => console.log(err))
+        getMovie()
     }, [slug])
+
+    function getMovie() {
+        axios.get(`${backendBaseUrl}/api/movies/${slug}`).then((resp) => setMovie(resp.data)).catch((err) => console.log(err))
+    } 
+
 
     function goBackButton(event) {
         event.preventDefault();
@@ -22,7 +27,7 @@ export default function MovieSinglePage() {
     }
 
     return (
-        <> <section>
+        <>      
             <div className="container">
                 <div className="row">
                     <h1>{movie.title}</h1>
@@ -57,11 +62,11 @@ export default function MovieSinglePage() {
                         </div>
                         {/* SEZIONE FORM */}
                         <h3>Inserisci la tua recensione:</h3>
-                    <ReviewForm />
+                    <ReviewForm movieId={movie.id} aggiornamentoReviews={getMovie}/>
                     </div>
                 </div>
             </div>
-        </section>
+        
         </>
     )
 }
