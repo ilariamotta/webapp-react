@@ -20,7 +20,7 @@ export default function MoviesCard({ movie }) {
 
             <div className="card-body">
                 <div className="d-flex justify-content-between py-3"><p className="fw-semibold">Voto: {movie.avg_vote}</p>
-                <Link to={`/movies/${movie.id}`} className="btn btn-primary btn-sm">Vedi le recensioni</Link>
+                <Link to={`/movies/${movie.slug}`} className="btn btn-primary btn-sm">Vedi le recensioni</Link>
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item py-1 align-items-center"><span>Aggiunto il: </span>{movie.created_at}</li>

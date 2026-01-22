@@ -15,7 +15,7 @@ const nomeApp = "Movies App";
 <Route element={<AppLayout nomeApp={nomeApp}/>}>
 <Route element={<Homepage/>} path="/"/>
 <Route element={<MoviesPage/>} path="/movies"/>
-<Route element={<MovieSinglePage/>} path="/movies/:id"/>
+<Route element={<MovieSinglePage/>} path="/movies/:slug"/>
 </Route>
 </Routes>
 </BrowserRouter>

@@ -4,16 +4,17 @@ import { useState } from "react";
 import axios from "axios";
 import NoImage from "../assets/images/No-Photo-Available.jpg";
 import ReviewCard from "../components/ReviewCard";
+import ReviewForm from "../components/ReviewForm";
 
 export default function MovieSinglePage() {
     const navigator = useNavigate();
     const [movie, setMovie] = useState({});
-    const { id } = useParams();
+    const { slug } = useParams();
     const backendBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
-        axios.get(`${backendBaseUrl}/api/movies/${id}`).then((resp) => setMovie(resp.data)).catch((err) => console.log(err))
-    }, [id])
+        axios.get(`${backendBaseUrl}/api/movies/${slug}`).then((resp) => setMovie(resp.data)).catch((err) => console.log(err))
+    }, [slug])
 
     function goBackButton(event) {
         event.preventDefault();
@@ -54,6 +55,9 @@ export default function MovieSinglePage() {
                                 <p>Nessuna recensione presente</p>
                             )}
                         </div>
+                        {/* SEZIONE FORM */}
+                        <h3>Inserisci la tua recensione:</h3>
+                    <ReviewForm />
                     </div>
                 </div>
             </div>
