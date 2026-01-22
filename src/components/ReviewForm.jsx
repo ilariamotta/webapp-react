@@ -24,7 +24,7 @@ export default function ReviewForm ({movieId, aggiornamentoReviews}) {
 
     function handleSubmit (event) {
         event.preventDefault();
-        axios.post(`${backendBaseUrl}/api/movies/${movieId}/reviews`, formData).then(() => {aggiornamentoReviews(); setFormData(initialFormValue)}).catch((err) => {console.log(err)})
+        axios.post(`${backendBaseUrl}/api/movies/${movieId}/reviews`, formData).then(() => {aggiornamentoReviews(); setFormData(initialFormValue)}).catch((err) => {alert(err.response.data.message)})
 
     }
 
@@ -34,10 +34,10 @@ export default function ReviewForm ({movieId, aggiornamentoReviews}) {
             <div className="py-3">
                 {/* nome */}
                 <label className="form-label" htmlFor="name">Nome</label>
-                <input className="form-control" type="text" id="name" value={formData.name} onChange={updateFormData} name="name"/>
+                <input className="form-control" type="text" id="name" value={formData.name} onChange={updateFormData} name="name" required/>
                 {/* voto */}
                 <label className="form-label" htmlFor="vote">Voto</label>
-                <input className="form-control" type="number" id="vote" value={formData.vote} onChange={updateFormData} name="vote"/>
+                <input className="form-control" type="number" id="vote" value={formData.vote} onChange={updateFormData} name="vote" min="1" max="5"  required/>
                 {/* testo */}
                 <label className="form-label" htmlFor="text">La tua recensione</label>
                 <textarea className="form-control" type="text" id="text" value={formData.text} onChange={updateFormData} name="text"/>
